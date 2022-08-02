@@ -68,6 +68,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlowCounterTest.vb" />
     <Compile Include="DigitIntegerCheckTest.vb" />
     <Compile Include="HitCounterTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
