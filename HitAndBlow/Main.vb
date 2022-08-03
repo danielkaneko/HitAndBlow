@@ -2,8 +2,7 @@
 
     Sub Main()
         Dim qnr As New QuestionNumberGenerator
-        Dim dic As New DigitIntegerCheck
-        Dim noc As New NumbersOnlyCheck
+        Dim ianc As New InputAnswerNumberChecker
         Dim questionNumber As String = qnr.MakeRandomNumber
         Dim answerNumber As String
 
@@ -12,7 +11,7 @@
             Do
                 Console.WriteLine("** 数値を入力してください **")
                 answerNumber = Console.ReadLine()
-            Loop While Not noc.IsNumbersOnly(answerNumber) AndAlso Not dic.IsFourDigitInteger(answerNumber)
+            Loop While Not ianc.IsInputAnswerNumber(answerNumber, questionNumber)
 
             Dim hc As New HitCounter
             Dim bc As New BlowCounter
