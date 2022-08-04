@@ -21,11 +21,10 @@
 
         If IsInputShowAnswer(inputContents) Then
             Console.WriteLine("答えは" & questionNumber)
-        ElseIf noc.IsNumbersOnly(inputContents) AndAlso dic.IsFourDigitInteger(inputContents) Then
-            Return True
+            Return False
+        Else
+            Return noc.IsNumbersOnly(inputContents) AndAlso dic.IsFourDigitInteger(inputContents)
         End If
-
-        Return False
     End Function
 
 End Class
