@@ -6,7 +6,7 @@
     ''' <param name="inputContents">入力した数字</param>
     ''' <returns>入力された数字がShowAnswerであればTrue、そうでなければFalse</returns>
     Public Function IsInputShowAnswer(inputContents As String) As Boolean
-        Return inputContents.Equals("ShowAnswer")
+        Return "ShowAnswer".Equals(inputContents)
     End Function
 
     ''' <summary>
