@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlowCounter.vb" />
+    <Compile Include="ElapsedTimeCalculator.vb" />
     <Compile Include="DigitIntegerCheck.vb" />
     <Compile Include="HitCounter.vb" />
     <Compile Include="InputAnswerNumberChecker.vb" />
