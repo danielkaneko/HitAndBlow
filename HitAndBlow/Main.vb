@@ -7,12 +7,15 @@
         Dim answerNumber As String
         Dim startTime As TimeSpan = DateTime.Now.TimeOfDay
         Dim finishTime As TimeSpan
+        Dim answerCount As Integer = 0
+
         Do
             '数値入力
             Do
                 Console.WriteLine("** 数値を入力してください **")
                 answerNumber = Console.ReadLine()
             Loop While Not ianc.IsInputAnswerNumber(answerNumber, questionNumber)
+            answerCount += 1
 
             Dim hc As New HitCounter
             Dim bc As New BlowCounter
@@ -30,7 +33,7 @@
                 Console.WriteLine(hit & "HIT　" & blow & "BLOW")
             End If
         Loop
-
+        Console.WriteLine("クリアまで:" & answerCount & "手")
         Console.WriteLine("クリアタイム　" & ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime).ToString("mm\:ss\.ff"))
         Console.ReadKey()
     End Sub
