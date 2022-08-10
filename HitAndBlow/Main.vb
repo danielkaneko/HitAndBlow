@@ -22,12 +22,12 @@
 
             'ヒット数が４になるまでゲームを繰り返す
             If hit = GAME_NUMBER Then
-                Console.WriteLine("正解です。")
+                DisplayToScreen.ShowClearMessage()
                 finishTime = DateTime.Now.TimeOfDay
                 Console.ReadKey()
                 Exit Do
             Else
-                Console.WriteLine(hit & "HIT　" & blow & "BLOW")
+                DisplayToScreen.ShowHitNumberAndBlowNumber(hit, blow)
             End If
         Loop
 

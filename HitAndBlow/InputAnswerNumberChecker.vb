@@ -20,7 +20,7 @@
         Dim noc As New NumbersOnlyCheck
 
         If IsInputShowAnswer(inputContent) Then
-            Console.WriteLine("答えは" & questionNumber)
+            DisplayToScreen.ShowAnswer(questionNumber)
             Return False
         End If
 
