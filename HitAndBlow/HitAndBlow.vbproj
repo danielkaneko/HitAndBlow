@@ -76,6 +76,7 @@
     <Compile Include="HitCounter.vb" />
     <Compile Include="InputAnswerNumberChecker.vb" />
     <Compile Include="Main.vb" />
+    <Compile Include="MeaningfulInputCheck.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

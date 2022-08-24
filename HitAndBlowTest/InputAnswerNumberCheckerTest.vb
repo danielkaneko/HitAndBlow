@@ -42,4 +42,25 @@ Public Class InputAnswerNumberCheckerTest
         Dim actual As Boolean = ianc.IsInputShowAnswer("showanswer")
         Assert.IsFalse(actual)
     End Sub
+
+    <Test>
+    Public Sub IsInputGiveUpが大文字小文字関係なくgiveupを通すこと()
+        Dim ianc As New InputAnswerNumberChecker
+        Dim actual As Boolean = ianc.IsInputGiveUp("gIVeuP")
+        Assert.IsTrue(actual)
+    End Sub
+
+    <Test>
+    Public Sub IsInputGiveUpがgiveup以外の入力がされたらFalseを通すこと()
+        Dim ianc As New InputAnswerNumberChecker
+        Dim actual As Boolean = ianc.IsInputGiveUp("giveap")
+        Assert.IsFalse(actual)
+    End Sub
+
+    <Test>
+    Public Sub IsInputGiveUpの引数がNullの場合Falseを返すこと()
+        Dim ianc As New InputAnswerNumberChecker
+        Dim actual As Boolean = ianc.IsInputGiveUp(Nothing)
+        Assert.IsFalse(actual)
+    End Sub
 End Class
