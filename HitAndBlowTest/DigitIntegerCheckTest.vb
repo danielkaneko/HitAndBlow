@@ -28,4 +28,11 @@ Public Class DigitIntegerCheckTest
         Dim actual As Boolean = dic.IsFourDigitInteger("123")
         Assert.IsFalse(actual)
     End Sub
+
+    <Test>
+    Public Sub IsFourDigitIntegerが負の数字を通さないこと()
+        Dim dic As New DigitIntegerCheck
+        Dim actual As Boolean = dic.IsFourDigitInteger("-123")
+        Assert.IsFalse(actual)
+    End Sub
 End Class

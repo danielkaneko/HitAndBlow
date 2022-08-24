@@ -1,4 +1,5 @@
-﻿Public Class DigitIntegerCheck
+﻿Imports System.Text.RegularExpressions
+Public Class DigitIntegerCheck
     ''' <summary>
     ''' 4桁整数のみを通す入力チェック
     ''' </summary>
@@ -6,7 +7,7 @@
     ''' <returns>4桁の整数であればTrueそうでなければFalse</returns>
     Public Function IsFourDigitInteger(answerNumber As String) As Boolean
         '入力チェック(4桁の整数)
-        If answerNumber.Length = 4 AndAlso Not answerNumber.Contains(".") Then
+        If Regex.IsMatch(answerNumber, "^[0-9]{4}$") Then
             Return True
         Else
             Console.WriteLine("4桁の整数を入力してください")
