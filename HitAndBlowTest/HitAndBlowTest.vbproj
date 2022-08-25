@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlowCounterTest.vb" />
+    <Compile Include="ElapsedTimeCalculatorTest.vb" />
     <Compile Include="DigitIntegerCheckTest.vb" />
     <Compile Include="HitCounterTest.vb" />
     <Compile Include="InputAnswerNumberCheckerTest.vb" />
