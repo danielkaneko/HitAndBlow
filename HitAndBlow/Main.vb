@@ -10,7 +10,7 @@
         Do
             '数値入力
             Do
-                Console.WriteLine("** 数値を入力してください **")
+                Console.Write("数値を入力してください：")
                 answerNumber = Console.ReadLine()
             Loop While Not ianc.IsInputAnswerNumber(answerNumber, questionNumber)
 
