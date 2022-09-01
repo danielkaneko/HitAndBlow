@@ -1,14 +1,21 @@
 ﻿Public Module Main
 
     Sub Main()
+        Dim cd As New ChallengeDigit
+        Dim digitNumber As Integer = cd.GetChallengeDigit
+        If cd.IsInterruptedGame(digitNumber) Then
+            Console.WriteLine("ゲームをキャンセルしました")
+            Console.ReadKey()
+            Return
+        End If
         Dim qnr As New QuestionNumberGenerator
         Dim mic As New MeaningfulInputCheck
-        Dim questionNumber As String = qnr.MakeRandomNumber
+        Dim questionNumber As String = qnr.MakeRandomNumber(digitNumber)
         Dim answerNumber As String
         Dim startTime As TimeSpan = DateTime.Now.TimeOfDay
         Dim finishTime As TimeSpan
         Do
-            answerNumber = mic.WaitForMeaningfulInput(questionNumber)
+            answerNumber = mic.WaitForMeaningfulInput(questionNumber, digitNumber)
             If mic.IsGiveUp Then
                 DisplayToScreen.ShowAnswer(questionNumber)
                 Console.ReadKey()
@@ -19,10 +26,9 @@
             Dim bc As New BlowCounter
             Dim hit As Integer = hc.CountHit(answerNumber, questionNumber)
             Dim blow As Integer = bc.CountBlow(answerNumber, questionNumber, hit)
-            Const GAME_NUMBER As Integer = 4
 
-            'ヒット数が４になるまでゲームを繰り返す
-            If hit = GAME_NUMBER Then
+            'ヒット数が答えの数字の桁数と同じになるまでゲームを繰り返す
+            If hit = digitNumber Then
                 DisplayToScreen.ShowClearMessage()
                 finishTime = DateTime.Now.TimeOfDay
                 Console.ReadKey()
