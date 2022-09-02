@@ -26,7 +26,7 @@
     Public Function WaitForMeaningfulInput(questionNumber As String, digitNumber As Integer) As String
         Dim answerNumber As String
         Do
-            Console.WriteLine("** 数値を入力してください **")
+            Console.Write("数値を入力してください：")
             answerNumber = Console.ReadLine()
         Loop While Not IsMeaningfulInput(answerNumber, questionNumber, digitNumber)
         Return answerNumber
