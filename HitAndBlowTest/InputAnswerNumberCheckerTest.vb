@@ -1,66 +1,70 @@
 ﻿Imports NUnit.Framework
 Imports HitAndBlow
-Public Class InputAnswerNumberCheckerTest
-    <Test>
-    Public Sub IsInputAnswerNumberが指定桁の整数を通すこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("123", "567", 3)
-        Assert.IsTrue(actual)
+<TestFixture>
+Public MustInherit Class InputAnswerNumberCheckerTest
+    Private ianc As InputAnswerNumberChecker
+    <SetUp>
+    Public Sub Setup()
+        ianc = New InputAnswerNumberChecker
     End Sub
 
-    <Test>
-    Public Sub IsInputAnswerNumberが数字以外を通さないこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("123a", "5678", 4)
-        Assert.IsFalse(actual)
-    End Sub
+    Public Class IsInputAnswerNumberTest : Inherits InputAnswerNumberCheckerTest
+        <Test>
+        Public Sub 渡された内容が指定桁の整数であればTrueを返すこと()
+            Dim actual As Boolean = ianc.IsInputAnswerNumber("123", "567", 3)
+            Assert.IsTrue(actual)
+        End Sub
 
-    <Test>
-    Public Sub IsInputAnswerNumberが少数を通さないこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("1.234", "56789", 5)
-        Assert.IsFalse(actual)
-    End Sub
+        <Test>
+        Public Sub 渡された内容文字列が含まれていればFalseを返すこと()
+            Dim actual As Boolean = ianc.IsInputAnswerNumber("123a", "5678", 4)
+            Assert.IsFalse(actual)
+        End Sub
 
-    <Test>
-    Public Sub IsInputAnswerNumberが指定桁の数字以外を通さないこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("123", "567890", 6)
-        Assert.IsFalse(actual)
-    End Sub
+        <Test>
+        Public Sub 渡された内容が小数であればFalseを返すこと()
+            Dim actual As Boolean = ianc.IsInputAnswerNumber("1.234", "56789", 5)
+            Assert.IsFalse(actual)
+        End Sub
 
-    <Test>
-    Public Sub IsInputShowAnswerがShowAnswerを通すこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputShowAnswer("ShowAnswer")
-        Assert.IsTrue(actual)
-    End Sub
+        <Test>
+        Public Sub 渡された内容が指定桁の整数でなければFalseを返すこと()
+            Dim actual As Boolean = ianc.IsInputAnswerNumber("123", "567890", 6)
+            Assert.IsFalse(actual)
+        End Sub
+    End Class
 
-    <Test>
-    Public Sub IsInputShowAnswerがShowAnswer以外を通さないこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputShowAnswer("showanswer")
-        Assert.IsFalse(actual)
-    End Sub
+    Public Class IsInputShowAnswerTest : Inherits InputAnswerNumberCheckerTest
+        <Test>
+        Public Sub 渡された内容がShowAnswerであればTrueを返すこと()
+            Dim actual As Boolean = ianc.IsInputShowAnswer("ShowAnswer")
+            Assert.IsTrue(actual)
+        End Sub
 
-    <Test>
-    Public Sub IsInputGiveUpが大文字小文字関係なくgiveupを通すこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputGiveUp("gIVeuP")
-        Assert.IsTrue(actual)
-    End Sub
+        <Test>
+        Public Sub 渡された内容がShowAnswer以外の文字列であればFalseを返すこと()
+            Dim actual As Boolean = ianc.IsInputShowAnswer("showanswer")
+            Assert.IsFalse(actual)
+        End Sub
+    End Class
 
-    <Test>
-    Public Sub IsInputGiveUpがgiveup以外の入力がされたらFalseを通すこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputGiveUp("giveap")
-        Assert.IsFalse(actual)
-    End Sub
+    Public Class IsInputGiveUp : Inherits InputAnswerNumberCheckerTest
+        <Test>
+        Public Sub 渡された内容が大文字小文字関係なくgiveupであればTrueを返すこと()
+            Dim actual As Boolean = ianc.IsInputGiveUp("gIVeuP")
+            Assert.IsTrue(actual)
+        End Sub
 
-    <Test>
-    Public Sub IsInputGiveUpの引数がNullの場合Falseを返すこと()
-        Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputGiveUp(Nothing)
-        Assert.IsFalse(actual)
-    End Sub
+        <Test>
+        Public Sub 渡された内容がgiveupでなければFalseを返すこと()
+            Dim actual As Boolean = ianc.IsInputGiveUp("giveap")
+            Assert.IsFalse(actual)
+        End Sub
+
+        <Test>
+        Public Sub 渡された内容がNullであればFalseを返すこと()
+            Dim actual As Boolean = ianc.IsInputGiveUp(Nothing)
+            Assert.IsFalse(actual)
+        End Sub
+    End Class
 End Class
