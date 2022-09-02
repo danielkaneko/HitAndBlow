@@ -31,15 +31,13 @@
             If hit = digitNumber Then
                 DisplayToScreen.ShowClearMessage()
                 finishTime = DateTime.Now.TimeOfDay
+                Console.WriteLine("クリアタイム　" & ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime).ToString("mm\:ss\.ff"))
                 Console.ReadKey()
                 Exit Do
             Else
                 DisplayToScreen.ShowHitNumberAndBlowNumber(hit, blow)
             End If
         Loop
-
-        Console.WriteLine("クリアタイム　" & ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime).ToString("mm\:ss\.ff"))
-        Console.ReadKey()
     End Sub
 
 End Module
