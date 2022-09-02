@@ -2,17 +2,18 @@
 
     Sub Main()
         Dim qnr As New QuestionNumberGenerator
-        Dim ianc As New InputAnswerNumberChecker
+        Dim mic As New MeaningfulInputCheck
         Dim questionNumber As String = qnr.MakeRandomNumber
         Dim answerNumber As String
         Dim startTime As TimeSpan = DateTime.Now.TimeOfDay
         Dim finishTime As TimeSpan
         Do
-            '数値入力
-            Do
-                Console.Write("数値を入力してください：")
-                answerNumber = Console.ReadLine()
-            Loop While Not ianc.IsInputAnswerNumber(answerNumber, questionNumber)
+            answerNumber = mic.WaitForMeaningfulInput(questionNumber)
+            If mic.IsGiveUp Then
+                DisplayToScreen.ShowAnswer(questionNumber)
+                Console.ReadKey()
+                Exit Do
+            End If
 
             Dim hc As New HitCounter
             Dim bc As New BlowCounter
@@ -22,12 +23,12 @@
 
             'ヒット数が４になるまでゲームを繰り返す
             If hit = GAME_NUMBER Then
-                Console.WriteLine("正解です。")
+                DisplayToScreen.ShowClearMessage()
                 finishTime = DateTime.Now.TimeOfDay
                 Console.ReadKey()
                 Exit Do
             Else
-                Console.WriteLine(hit & "HIT　" & blow & "BLOW")
+                DisplayToScreen.ShowHitNumberAndBlowNumber(hit, blow)
             End If
         Loop
 
