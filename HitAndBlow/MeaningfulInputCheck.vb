@@ -13,9 +13,12 @@
     ''' <returns>入力内容が正しければTrue、そうでなければFalse</returns>
     Public Function IsMeaningfulInput(answerNumber As String, questionNumber As String, digitNumber As Integer) As Boolean
         Dim ianc As New InputAnswerNumberChecker
-        IsGiveUp = ianc.IsInputGiveUp(answerNumber)
+        If ianc.IsInputGiveUp(answerNumber) Then
+            IsGiveUp = True
+            Return IsGiveUp
+        End If
         Dim isAnswerNumber As Boolean = ianc.IsInputAnswerNumber(answerNumber, questionNumber, digitNumber)
-        Return IsGiveUp OrElse isAnswerNumber
+        Return isAnswerNumber
     End Function
 
     ''' <summary>
