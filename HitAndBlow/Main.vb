@@ -13,6 +13,8 @@
         Dim questionNumber As String = qnr.MakeRandomNumber(digitNumber)
         Dim answerNumber As String
         Dim startTime As TimeSpan = DateTime.Now.TimeOfDay
+        Dim answerCount As Integer = 0
+
         Do
             answerNumber = mic.WaitForMeaningfulInput(questionNumber, digitNumber)
             If mic.IsGiveUp Then
@@ -20,6 +22,7 @@
                 Console.ReadKey()
                 Exit Do
             End If
+            answerCount += 1
 
             Dim hc As New HitCounter
             Dim bc As New BlowCounter
@@ -30,6 +33,7 @@
             If hit = digitNumber Then
                 DisplayToScreen.ShowClearMessage()
                 Dim finishTime As TimeSpan = DateTime.Now.TimeOfDay
+                Console.WriteLine("クリアまで:" & answerCount & "手")
                 Console.WriteLine("クリアタイム　" & ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime).ToString("mm\:ss\.ff"))
                 Console.ReadKey()
                 Exit Do
