@@ -13,9 +13,12 @@
     ''' <returns>入力内容が正しければTrue、そうでなければFalse</returns>
     Public Function IsMeaningfulInput(answerNumber As String, questionNumber As String, digitNumber As Integer) As Boolean
         Dim ianc As New InputAnswerNumberChecker
-        IsGiveUp = ianc.IsInputGiveUp(answerNumber)
+        If ianc.IsInputGiveUp(answerNumber) Then
+            IsGiveUp = True
+            Return IsGiveUp
+        End If
         Dim isAnswerNumber As Boolean = ianc.IsInputAnswerNumber(answerNumber, questionNumber, digitNumber)
-        Return IsGiveUp OrElse isAnswerNumber
+        Return isAnswerNumber
     End Function
 
     ''' <summary>
@@ -26,7 +29,7 @@
     Public Function WaitForMeaningfulInput(questionNumber As String, digitNumber As Integer) As String
         Dim answerNumber As String
         Do
-            Console.WriteLine("** 数値を入力してください **")
+            Console.Write("数値を入力してください：")
             answerNumber = Console.ReadLine()
         Loop While Not IsMeaningfulInput(answerNumber, questionNumber, digitNumber)
         Return answerNumber

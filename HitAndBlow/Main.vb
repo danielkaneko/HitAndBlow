@@ -13,7 +13,6 @@
         Dim questionNumber As String = qnr.MakeRandomNumber(digitNumber)
         Dim answerNumber As String
         Dim startTime As TimeSpan = DateTime.Now.TimeOfDay
-        Dim finishTime As TimeSpan
         Do
             answerNumber = mic.WaitForMeaningfulInput(questionNumber, digitNumber)
             If mic.IsGiveUp Then
@@ -30,16 +29,14 @@
             'ヒット数が答えの数字の桁数と同じになるまでゲームを繰り返す
             If hit = digitNumber Then
                 DisplayToScreen.ShowClearMessage()
-                finishTime = DateTime.Now.TimeOfDay
+                Dim finishTime As TimeSpan = DateTime.Now.TimeOfDay
+                Console.WriteLine("クリアタイム　" & ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime).ToString("mm\:ss\.ff"))
                 Console.ReadKey()
                 Exit Do
             Else
                 DisplayToScreen.ShowHitNumberAndBlowNumber(hit, blow)
             End If
         Loop
-
-        Console.WriteLine("クリアタイム　" & ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime).ToString("mm\:ss\.ff"))
-        Console.ReadKey()
     End Sub
 
 End Module
