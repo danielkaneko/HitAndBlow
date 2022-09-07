@@ -1,9 +1,10 @@
 ﻿Public Class QuestionNumberGenerator
     ''' <summary>
-    ''' 答えの４桁の数字を生成し、返す
+    ''' 答えの数字を生成し、返す
     ''' </summary>
+    ''' <param name="digit">桁数</param>
     ''' <returns>答えの数字</returns>
-    Public Function MakeRandomNumber() As String
+    Public Function MakeRandomNumber(digit As Integer) As String
         Dim number As String() = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
         Dim random As New Random
         Dim temporaryRetention As String
@@ -17,8 +18,8 @@
         Next
 
         Dim hbQuestion As String = ""
-        '頭4つ代入
-        For i As Integer = 0 To 3
+        '指定桁数分代入
+        For i As Integer = 0 To digit - 1
             hbQuestion += number(i)
         Next
 

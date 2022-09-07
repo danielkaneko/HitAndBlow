@@ -1,16 +1,16 @@
 ﻿Imports System.Text.RegularExpressions
 Public Class DigitIntegerCheck
     ''' <summary>
-    ''' 4桁整数のみを通す入力チェック
+    ''' 指定桁整数のみを通す入力チェック
     ''' </summary>
     ''' <param name="answerNumber">入力した数字</param>
-    ''' <returns>4桁の整数であればTrueそうでなければFalse</returns>
-    Public Function IsFourDigitInteger(answerNumber As String) As Boolean
-        '入力チェック(4桁の整数)
-        If Regex.IsMatch(answerNumber, "^[0-9]{4}$") Then
+    ''' <returns>指定桁の整数であればTrueそうでなければFalse</returns>
+    Public Function IsSpecifiedDigitInteger(answerNumber As String, answerDigit As Integer) As Boolean
+        '入力チェック(指定桁の整数)
+        If Regex.IsMatch(answerNumber, String.Format("^[0-9]{{{0}}}$", answerDigit)) Then
             Return True
         Else
-            Console.WriteLine("4桁の整数を入力してください")
+            Console.WriteLine(answerDigit & "桁の整数を入力してください")
             Return False
         End If
 

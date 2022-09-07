@@ -2,30 +2,30 @@
 Imports HitAndBlow
 Public Class InputAnswerNumberCheckerTest
     <Test>
-    Public Sub IsInputAppropriateが4桁の整数を通すこと()
+    Public Sub IsInputAnswerNumberが指定桁の整数を通すこと()
         Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("1234", "5678")
+        Dim actual As Boolean = ianc.IsInputAnswerNumber("123", "567", 3)
         Assert.IsTrue(actual)
     End Sub
 
     <Test>
-    Public Sub IsInputAppropriateが数字以外を通さないこと()
+    Public Sub IsInputAnswerNumberが数字以外を通さないこと()
         Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("123a", "5678")
+        Dim actual As Boolean = ianc.IsInputAnswerNumber("123a", "5678", 4)
         Assert.IsFalse(actual)
     End Sub
 
     <Test>
-    Public Sub IsInputAppropriateが少数を通さないこと()
+    Public Sub IsInputAnswerNumberが少数を通さないこと()
         Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("1.23", "5678")
+        Dim actual As Boolean = ianc.IsInputAnswerNumber("1.234", "56789", 5)
         Assert.IsFalse(actual)
     End Sub
 
     <Test>
-    Public Sub IsInputAppropriateが4桁の数字以外を通さないこと()
+    Public Sub IsInputAnswerNumberが指定桁の数字以外を通さないこと()
         Dim ianc As New InputAnswerNumberChecker
-        Dim actual As Boolean = ianc.IsInputAnswerNumber("123", "5678")
+        Dim actual As Boolean = ianc.IsInputAnswerNumber("123", "567890", 6)
         Assert.IsFalse(actual)
     End Sub
 
