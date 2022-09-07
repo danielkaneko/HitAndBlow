@@ -71,10 +71,13 @@
   <ItemGroup>
     <Compile Include="BlowCounter.vb" />
     <Compile Include="ElapsedTimeCalculator.vb" />
+    <Compile Include="ChallengeDigit.vb" />
     <Compile Include="DigitIntegerCheck.vb" />
+    <Compile Include="DisplayToScreen.vb" />
     <Compile Include="HitCounter.vb" />
     <Compile Include="InputAnswerNumberChecker.vb" />
     <Compile Include="Main.vb" />
+    <Compile Include="MeaningfulInputCheck.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
