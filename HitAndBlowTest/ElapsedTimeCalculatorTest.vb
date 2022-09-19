@@ -2,7 +2,7 @@
 Imports HitAndBlow
 Public Class ElapsedTimeCalculatorTest
     <Test>
-    Public Sub CalculateElapsedTimeが開始時間と終了時間の差分を返すこと()
+    Public Sub 開始時間と終了時間の差分を返す()
         Dim startTime As New TimeSpan(1, 1, 10, 10, 100)
         Dim finishTime As New TimeSpan(1, 1, 11, 11, 111)
         Dim actual As TimeSpan = ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime)
@@ -10,7 +10,7 @@ Public Class ElapsedTimeCalculatorTest
     End Sub
 
     <Test>
-    Public Sub CalculateElapsedTimeが一桁で入力された開始時間と終了時間の差分を返すこと()
+    Public Sub 一桁で入力された開始時間と終了時間の差分を返す()
         Dim startTime As New TimeSpan(1, 1, 0, 2, 100)
         Dim finishTime As New TimeSpan(1, 1, 1, 4, 111)
         Dim actual As TimeSpan = ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime)
@@ -18,7 +18,7 @@ Public Class ElapsedTimeCalculatorTest
     End Sub
 
     <Test>
-    Public Sub CalculateElapsedTimeが繰り上がりが発生している開始時間と終了時間の差分を返すこと()
+    Public Sub 繰り上がりが発生している開始時間と終了時間の差分を返す()
         Dim startTime As New TimeSpan(1, 1, 0, 10, 100)
         Dim finishTime As New TimeSpan(1, 1, 1, 0, 111)
         Dim actual As TimeSpan = ElapsedTimeCalculator.CalculateElapsedTime(startTime, finishTime)
